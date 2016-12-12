@@ -515,6 +515,8 @@ func (s *testParserSuite) TestBuiltin(c *C) {
 		{"SELECT SUBSTRING('Quadratically' FROM 5);", true},
 		{"SELECT SUBSTRING('Quadratically' FROM 5 FOR 3);", true},
 
+		{"SELECT INSTR('foobarbar', 'bar');", true},
+
 		{"SELECT CONVERT('111', SIGNED);", true},
 
 		// Information Functions

@@ -140,6 +140,7 @@ const (
 	Ucase          = "ucase"
 	Hex            = "hex"
 	Unhex          = "unhex"
+	Instr          = "instr"
 
 	// information functions
 	ConnectionID = "connection_id"

@@ -286,6 +286,18 @@ func (s *testEvaluatorSuite) TestReplace(c *C) {
 	}
 }
 
+func (s *testEvaluatorSuite) TestInstr(c *C) {
+	defer testleak.AfterTest(c)()
+
+	d, err := builtinInstr(types.MakeDatums([]interface{}{"foobarbar", "bar"}...), s.ctx)
+	c.Assert(err, IsNil)
+	c.Assert(d.GetInt64(), Equals, int64(4))
+
+	d, err = builtinInstr(types.MakeDatums([]interface{}{"xbar", "foobar"}...), s.ctx)
+	c.Assert(err, IsNil)
+	c.Assert(d.GetInt64(), Equals, int64(0))
+}
+
 func (s *testEvaluatorSuite) TestSubstring(c *C) {
 	defer testleak.AfterTest(c)()
 

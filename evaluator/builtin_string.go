@@ -359,6 +359,26 @@ func builtinSubstring(args []types.Datum, _ context.Context) (d types.Datum, err
 	return d, nil
 }
 
+func builtinInstr(args []types.Datum, _ context.Context) (d types.Datum, err error) {
+	log.Debugf("call func instr .....")
+	str, err := args[0].ToString()
+	if err != nil {
+		return d, errors.Errorf("Instr invalid args, need string but get %T", args[0].GetValue())
+	}
+	substr, err := args[1].ToString()
+	if err != nil {
+		return d, errors.Errorf("Instr invalid args, need string but get %T", args[1].GetValue())
+	}
+	index := strings.Index(str, substr)
+	if index >= 0 {
+		index += 1
+	} else {
+		index = 0
+	}
+	d.SetInt64(int64(index))
+	return d, nil
+}
+
 // See https://dev.mysql.com/doc/refman/5.7/en/string-functions.html#function_substring-index
 func builtinSubstringIndex(args []types.Datum, ctx context.Context) (d types.Datum, err error) {
 	// The meaning of the elements of args.

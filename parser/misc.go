@@ -272,6 +272,7 @@ var tokenMap = map[string]int{
 	"INFILE":              infile,
 	"INNER":               inner,
 	"INSERT":              insert,
+	"INSTR": 		instr,
 	"INTERVAL":            interval,
 	"INTO":                into,
 	"IS":                  is,
